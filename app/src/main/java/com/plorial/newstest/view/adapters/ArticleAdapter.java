@@ -41,7 +41,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             TextView title = (TextView) view.findViewById(R.id.tvTitle);
             ImageView img = (ImageView) view.findViewById(R.id.img);
             title.setText(article.getTitle());
-            if(article.getUrlToImage() != null){
+            if(article.getUrlToImage() == null){
                 img.setVisibility(View.GONE);
             }
         }

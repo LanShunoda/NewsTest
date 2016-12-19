@@ -1,9 +1,13 @@
 package com.plorial.newstest.presenter;
 
+import android.content.Intent;
+
 import com.plorial.newstest.model.Model;
 import com.plorial.newstest.model.ModelImpl;
 import com.plorial.newstest.model.api.NewsApiModule;
+import com.plorial.newstest.model.pojo.Article;
 import com.plorial.newstest.model.pojo.News;
+import com.plorial.newstest.view.ArticleActivity;
 import com.plorial.newstest.view.NewsListView;
 
 import retrofit.HttpException;
@@ -56,5 +60,12 @@ public class NewsListPresenter implements Presenter {
         if (!subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
+    }
+
+    @Override
+    public void onItemClick(Article article) {
+        Intent intent = new Intent(view.getContext(), ArticleActivity.class);
+        intent.putExtra(ArticleActivity.TAG, article);
+        view.getContext().startActivity(intent);
     }
 }
